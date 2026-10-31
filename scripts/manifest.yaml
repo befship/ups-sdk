@@ -1,0 +1,206 @@
+# UPS REST API manifest.
+# Specs are downloaded at generate time from UPS-API/api-documentation (never committed).
+# Prefer *-Ready.yaml when both exist. package = Go dir under internal/generated/.
+#
+# server_cie / server_prod override broken or missing official servers entries.
+
+spec_repo: https://raw.githubusercontent.com/UPS-API/api-documentation/main
+
+apis:
+  - id: AddressValidation
+    file: AddressValidation-Ready.yaml
+    package: addressvalidation
+    server_cie: https://wwwcie.ups.com/api
+    server_prod: https://onlinetools.ups.com/api
+
+  - id: CommerceGuard
+    file: CommerceGuard.yaml
+    package: commerceguard
+    server_cie: https://wwwcie.ups.com/api
+    server_prod: https://onlinetools.ups.com/api
+
+  - id: CustomsDetailV2
+    file: CustomsDetailV2.yaml
+    package: customsdetail
+    server_cie: https://wwwcie.ups.com/api
+    server_prod: https://onlinetools.ups.com/api
+
+  - id: DangerousGoods
+    file: DangerousGoods-Ready.yaml
+    package: dangerousgoods
+    server_cie: https://wwwcie.ups.com/api
+    server_prod: https://onlinetools.ups.com/api
+
+  - id: DeliveryDefense
+    file: DeliveryDefense-Ready.yaml
+    package: deliverydefense
+    server_cie: https://wwwcie.ups.com/api/deliverydefense/external/v1.0
+    server_prod: https://onlinetools.ups.com/api/deliverydefense/external/v1.0
+
+  - id: DeliveryIntercept
+    file: DeliveryIntercept.yaml
+    package: deliveryintercept
+    server_cie: https://wwwcie.ups.com/api/deliveryintercept/v1
+    server_prod: https://onlinetools.ups.com/api/deliveryintercept/v1
+
+  - id: Forwarding
+    file: Forwarding.yaml
+    package: forwarding
+    server_cie: https://www.onlinetoolsuat.ups.com/api/forwarding/v1
+    server_prod: https://www.onlinetools.ups.com/api/forwarding/v1
+
+  - id: GlobalCheckout
+    file: GlobalCheckout.yaml
+    package: globalcheckout
+    server_cie: https://wwwcie.ups.com/api/brokerage/v1
+    server_prod: https://onlinetools.ups.com/api/brokerage/v1
+
+  - id: InteractiveDescriptionGuidance
+    file: InteractiveDescriptionGuidance.yaml
+    package: interactiveguidance
+    server_cie: https://wwwcie.ups.com/api/export-assure/v1
+    server_prod: https://onlinetools.ups.com/api/export-assure/v1
+
+  - id: LandedCost
+    file: LandedCost-Ready.yaml
+    package: landedcost
+    server_cie: https://wwwcie.ups.com/api
+    server_prod: https://onlinetools.ups.com/api
+
+  - id: Locator
+    file: Locator.yaml
+    package: locator
+    server_cie: https://wwwcie.ups.com/api
+    server_prod: https://onlinetools.ups.com/api
+
+  - id: OAuthAuthCode
+    file: OAuthAuthCode-Ready.yaml
+    package: oauthauthcode
+    server_cie: https://wwwcie.ups.com
+    server_prod: https://onlinetools.ups.com
+
+  - id: OAuthClientCredentials
+    file: OAuthClientCredentials-Ready.yaml
+    package: oauthclientcredentials
+    server_cie: https://wwwcie.ups.com
+    server_prod: https://onlinetools.ups.com
+
+  - id: Paperless
+    file: Paperless-Ready.yaml
+    package: paperless
+    server_cie: https://wwwcie.ups.com/api
+    server_prod: https://onlinetools.ups.com/api
+
+  - id: Pickup
+    file: Pickup.yaml
+    package: pickup
+    server_cie: https://wwwcie.ups.com/api
+    server_prod: https://onlinetools.ups.com/api
+
+  - id: PickupNotificationPreferences
+    file: PickupNotificationPreferences.yaml
+    package: pickupnotification
+    server_cie: https://wwwcie.ups.com/api
+    server_prod: https://onlinetools.ups.com/api
+
+  - id: PreNotification
+    file: PreNotification-Ready.yaml
+    package: prenotification
+    server_cie: https://wwwcie.ups.com/api
+    server_prod: https://onlinetools.ups.com/api
+
+  - id: ProtectedDeliveryToken
+    file: ProtectedDeliveryToken.yaml
+    package: protecteddeliverytoken
+    server_cie: https://wwwcie.ups.com/api/pin-mgmt-sys/v1
+    server_prod: https://onlinetools.ups.com/api/pin-mgmt-sys/v1
+
+  - id: QuantumView
+    file: QuantumView-Ready.yaml
+    package: quantumview
+    server_cie: https://wwwcie.ups.com/api
+    server_prod: https://onlinetools.ups.com/api
+
+  - id: Rating
+    file: Rating.yaml
+    package: rating
+    server_cie: https://wwwcie.ups.com/api
+    server_prod: https://onlinetools.ups.com/api
+
+  - id: SCSIngestInventory
+    file: SCSIngestInventory.yaml
+    package: scsinventory
+    server_cie: https://wwwcie.ups.com/inventory/v1
+    server_prod: https://onlinetools.ups.com/inventory/v1
+
+  - id: SCSIngestLogistics
+    file: SCSIngestLogistics.yaml
+    package: scslogistics
+    server_cie: https://wwwcie.ups.com/logistics/v1
+    server_prod: https://onlinetools.ups.com/logistics/v1
+
+  - id: Shipping
+    file: Shipping.yaml
+    package: shipping
+    server_cie: https://wwwcie.ups.com/api
+    server_prod: https://onlinetools.ups.com/api
+
+  - id: Smart-Pickup-Account-Management
+    file: Smart-Pickup-Account-Management.yaml
+    package: smartpickup
+    server_cie: https://wwwcie.ups.com/api/account/pickup-info/v1
+    server_prod: https://onlinetools.ups.com/api/account/pickup-info/v1
+
+  - id: TimeInTransit
+    file: TimeInTransit.yaml
+    package: timeintransit
+    server_cie: https://wwwcie.ups.com/api
+    server_prod: https://onlinetools.ups.com/api
+
+  - id: TradeDirect
+    file: TradeDirect.yaml
+    package: tradedirect
+    server_cie: https://wwwcie.ups.com/api/ship/tradedirect/v1
+    server_prod: https://onlinetools.ups.com/api/ship/tradedirect/v1
+
+  - id: UPSExportAssure
+    file: UPSExportAssure.yaml
+    package: exportassure
+    server_cie: https://wwwcie.ups.com/api/brokerage/v1
+    server_prod: https://onlinetools.ups.com/api/brokerage/v1
+
+  - id: UPSPickupPoints
+    file: UPSPickupPoints.yaml
+    package: pickuppoints
+    server_cie: https://wwwcie.ups.com/api/uppmanage/v1
+    server_prod: https://onlinetools.ups.com/api/uppmanage/v1
+
+  - id: UPSSCSTransportation
+    file: UPSSCSTransportation.yaml
+    package: scstransportation
+    server_cie: https://wwwcie.ups.com/api/transaction-visibility-dashboard/v1
+    server_prod: https://onlinetools.ups.com/api/transaction-visibility-dashboard/v1
+
+  - id: UPSTrackAlert
+    file: UPSTrackAlert-Ready.yaml
+    package: trackalert
+    server_cie: https://wwwcie.ups.com/api/track/v1
+    server_prod: https://onlinetools.ups.com/api/track/v1
+
+  - id: UPSTrackAlertEnhanced
+    file: UPSTrackAlertEnhanced-Ready.yaml
+    package: trackalertenhanced
+    server_cie: https://wwwcie.ups.com/api/track/v1
+    server_prod: https://onlinetools.ups.com/api/track/v1
+
+  - id: Tracking
+    file: Tracking-Ready.yaml
+    package: tracking
+    server_cie: https://wwwcie.ups.com/api
+    server_prod: https://onlinetools.ups.com/api
+
+  - id: WorldEaseShipmentManagement
+    file: WorldEaseShipmentManagement.yaml
+    package: worldease
+    server_cie: https://wwwcie.ups.com/api/ship/v1
+    server_prod: https://onlinetools.ups.com/api/ship/v1

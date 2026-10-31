@@ -1,0 +1,75 @@
+name: Generate UPS SDK
+
+# Manual only — no schedule. Run from Actions tab when UPS specs change.
+on:
+  workflow_dispatch:
+    inputs:
+      force_fetch:
+        description: "Re-download official OpenAPI specs (ignore cache)"
+        type: boolean
+        default: true
+      create_pr:
+        description: "Open a PR if generated code changed"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.22.x"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PyYAML
+        run: pip install pyyaml
+
+      - name: Install oapi-codegen
+        run: go install github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@v2.5.0
+
+      - name: Generate SDK from UPS official specs
+        env:
+          FORCE_FETCH: ${{ inputs.force_fetch && '1' || '0' }}
+        run: bash generate.sh
+
+      - name: go mod tidy
+        run: go mod tidy
+
+      - name: Test
+        run: go test ./... -count=1
+
+      - name: Detect changes
+        id: diff
+        run: |
+          if git diff --quiet -- internal/generated ups/servers.gen.go ups/apis.gen.go go.mod go.sum; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create Pull Request
+        if: inputs.create_pr && steps.diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore: regenerate UPS clients from official OpenAPI"
+          title: "chore: regenerate UPS clients from official OpenAPI"
+          body: |
+            Automated regeneration from [UPS-API/api-documentation](https://github.com/UPS-API/api-documentation).
+
+            - Official OpenAPI YAML is **not** committed (fetched in this workflow).
+            - Review generated diffs carefully before merge.
+          branch: chore/regenerate-ups-sdk
+          delete-branch: true

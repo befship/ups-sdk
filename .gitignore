@@ -1,0 +1,23 @@
+# UPS official OpenAPI specs — never commit (fetched at generate time)
+.cache/
+specs/
+*.yaml.bak
+
+# Local / tooling
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.exe
+bin/
+dist/
+coverage.out
+coverage.html
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Temp generate output
+/tmp/
