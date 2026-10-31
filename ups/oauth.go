@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	oauthgen "github.com/Bef-Ship/ups-sdk/internal/generated/oauthclientcredentials"
+	oauthgen "github.com/befship/ups-sdk/internal/generated/oauthclientcredentials"
 )
 
 type tokenCache struct {

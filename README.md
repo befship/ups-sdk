@@ -20,7 +20,7 @@ Official OpenAPI files are **not** stored in git. CI / `make generate` pulls the
 ## Install
 
 ```bash
-go get github.com/Bef-Ship/ups-sdk@latest
+go get github.com/befship/ups-sdk@latest
 ```
 
 ## Quick start
@@ -33,7 +33,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Bef-Ship/ups-sdk/ups"
+	"github.com/befship/ups-sdk/ups"
 )
 
 func main() {
@@ -87,9 +87,6 @@ After `make generate`, every UPS API in `scripts/manifest.yaml` is available und
 ```bash
 # Requires: go, python3 + PyYAML, network (or SPEC_LOCAL_DIR)
 make generate
-
-# Faster local loop (core APIs only)
-make generate-core
 
 # Seed from a local clone of UPS-API/api-documentation
 SPEC_LOCAL_DIR=/path/to/api-documentation make generate

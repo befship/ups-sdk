@@ -84,27 +84,9 @@ for a in doc["apis"]:
     print("|".join([a["package"], a["file"], a["server_cie"], a["server_prod"], a["id"]]))
 PY
 
-ONLY="${ONLY:-}"  # e.g. ONLY=rating,shipping,tracking
-
 fail=0
 count=0
-skipped=0
 while IFS='|' read -r pkg file server_cie server_prod id; do
-  if [[ -n "$ONLY" ]]; then
-    keep=0
-    IFS=',' read -ra want <<< "$ONLY"
-    for w in "${want[@]}"; do
-      if [[ "$pkg" == "$w" || "$id" == "$w" ]]; then
-        keep=1
-        break
-      fi
-    done
-    if [[ "$keep" -eq 0 ]]; then
-      skipped=$((skipped + 1))
-      continue
-    fi
-  fi
-
   count=$((count + 1))
   cached="${SPEC_CACHE}/${file}"
   # Optional: seed from a local mirror (never committed). Example:
@@ -175,7 +157,7 @@ if command -v gofmt >/dev/null 2>&1; then
 fi
 
 if [[ "$fail" -ne 0 ]]; then
-  echo "generate finished with errors (${count} attempted, ${skipped} skipped)" >&2
+  echo "generate finished with errors (${count} packages attempted)" >&2
   exit 1
 fi
-echo "generate done (${count} packages, ${skipped} skipped)."
+echo "generate done (${count} packages)."

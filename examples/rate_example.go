@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Bef-Ship/ups-sdk/ups"
+	"github.com/befship/ups-sdk/ups"
 )
 
 func main() {

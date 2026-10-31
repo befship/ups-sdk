@@ -4,7 +4,7 @@ import (
 	"context"
 	"net/http"
 
-	tracking "github.com/Bef-Ship/ups-sdk/internal/generated/tracking"
+	tracking "github.com/befship/ups-sdk/internal/generated/tracking"
 )
 
 // Re-exported Tracking types.

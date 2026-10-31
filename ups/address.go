@@ -4,7 +4,7 @@ import (
 	"context"
 	"net/http"
 
-	av "github.com/Bef-Ship/ups-sdk/internal/generated/addressvalidation"
+	av "github.com/befship/ups-sdk/internal/generated/addressvalidation"
 )
 
 // Re-exported Address Validation types.

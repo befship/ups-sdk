@@ -1,6 +1,6 @@
-module github.com/Bef-Ship/ups-sdk
+module github.com/befship/ups-sdk
 
-go 1.22
+go 1.25
 
 require github.com/oapi-codegen/runtime v1.1.1
 

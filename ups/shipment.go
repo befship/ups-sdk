@@ -4,7 +4,7 @@ import (
 	"context"
 	"net/http"
 
-	shipping "github.com/Bef-Ship/ups-sdk/internal/generated/shipping"
+	shipping "github.com/befship/ups-sdk/internal/generated/shipping"
 )
 
 // Re-exported Shipping types.

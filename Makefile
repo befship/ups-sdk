@@ -1,12 +1,8 @@
-.PHONY: generate generate-core fetch-specs test lint fmt tidy clean
+.PHONY: generate fetch-specs test lint fmt tidy clean
 
-# Full regenerate: fetch UPS OpenAPI specs, patch, generate all Go clients.
+# Fetch UPS OpenAPI specs, patch, generate all Go clients.
 generate:
 	bash generate.sh
-
-# Core APIs only (faster local iteration).
-generate-core:
-	ONLY=oauthclientcredentials,rating,shipping,tracking,addressvalidation bash generate.sh
 
 # Force re-download of official specs (still not committed).
 fetch-specs:

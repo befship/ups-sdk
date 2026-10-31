@@ -4,10 +4,10 @@ import (
 	"context"
 	"net/http"
 
-	rating "github.com/Bef-Ship/ups-sdk/internal/generated/rating"
+	rating "github.com/befship/ups-sdk/internal/generated/rating"
 )
 
-// Re-exported Rating types (import path stays github.com/Bef-Ship/ups-sdk/ups).
+// Re-exported Rating types (import path stays github.com/befship/ups-sdk/ups).
 type (
 	RateClient          = rating.ClientWithResponses
 	RateParams          = rating.RateOpParams

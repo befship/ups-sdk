@@ -22,7 +22,7 @@
 ## 安装
 
 ```bash
-go get github.com/Bef-Ship/ups-sdk@latest
+go get github.com/befship/ups-sdk@latest
 ```
 
 ## 快速开始
@@ -35,7 +35,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Bef-Ship/ups-sdk/ups"
+	"github.com/befship/ups-sdk/ups"
 )
 
 func main() {
@@ -92,9 +92,6 @@ lc, err := client.LandedCostClient()
 ```bash
 # 依赖：go、python3 + PyYAML、网络（或 SPEC_LOCAL_DIR）
 make generate
-
-# 本地快速迭代（仅核心 API）
-make generate-core
 
 # 从本地 UPS-API/api-documentation 克隆目录灌入
 SPEC_LOCAL_DIR=/path/to/api-documentation make generate

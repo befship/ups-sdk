@@ -60,7 +60,7 @@ def main() -> None:
         pkg = a["package"]
         if pkg in SKIP:
             continue
-        imports.append(f'\t{pkg} "github.com/Bef-Ship/ups-sdk/internal/generated/{pkg}"')
+        imports.append(f'\t{pkg} "github.com/befship/ups-sdk/internal/generated/{pkg}"')
         nicer = NICER.get(pkg, "".join(p[:1].upper() + p[1:] for p in pkg.split()))
         methods.append(
             f"""
