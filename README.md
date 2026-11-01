@@ -25,22 +25,24 @@ go get github.com/befship/ups-sdk@latest
 
 ## Quick start
 
+Credentials are passed in via `ups.Config` (plain strings). Reading them from the environment is optional and only a convenience in examples.
+
 ```go
 package main
 
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/befship/ups-sdk/ups"
 )
 
 func main() {
 	client := ups.New(ups.Config{
-		ClientID:     os.Getenv("UPS_CLIENT_ID"),
-		ClientSecret: os.Getenv("UPS_CLIENT_SECRET"),
-		Environment:  ups.EnvSandbox, // or ups.EnvProduction
+		ClientID:     "your-client-id",     // required; pass from your secret store / DB / flags
+		ClientSecret: "your-client-secret", // required
+		AccountNumber: "your-account",     // optional; x-merchant-id on token
+		Environment:  ups.EnvSandbox,      // or ups.EnvProduction
 	})
 
 	ctx := context.Background()

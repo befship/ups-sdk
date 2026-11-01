@@ -1,6 +1,6 @@
 //go:build ignore
 
-// Rate example — set UPS_CLIENT_ID, UPS_CLIENT_SECRET, UPS_ACCOUNT_NUMBER.
+// Rate example — pass credentials via ups.Config (env vars below are only for local demos).
 package main
 
 import (
@@ -13,6 +13,7 @@ import (
 )
 
 func main() {
+	// In real apps, pass ClientID/ClientSecret from your config/secret store — not os.Getenv.
 	client := ups.New(ups.Config{
 		ClientID:       os.Getenv("UPS_CLIENT_ID"),
 		ClientSecret:   os.Getenv("UPS_CLIENT_SECRET"),

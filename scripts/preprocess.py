@@ -326,6 +326,26 @@ def load_yaml(raw: str) -> dict[str, Any]:
     return doc
 
 
+def patch_ups_spec_quirks(doc: dict[str, Any]) -> None:
+    """Fix official UPS OpenAPI mismatches with live JSON responses."""
+    schemas = ((doc.get("components") or {}).get("schemas") or {})
+    if not isinstance(schemas, dict):
+        return
+
+    # Rating: NegotiatedRateCharges.BaseServiceCharge is documented as an array,
+    # but CIE/prod return a single object (same shape as RatedShipment.BaseServiceCharge).
+    nrc = schemas.get("RatedShipment_NegotiatedRateCharges")
+    if isinstance(nrc, dict):
+        props = nrc.get("properties")
+        if isinstance(props, dict):
+            bsc = props.get("BaseServiceCharge")
+            if isinstance(bsc, dict) and bsc.get("type") == "array":
+                items = bsc.get("items")
+                ref = items.get("$ref") if isinstance(items, dict) else None
+                if ref:
+                    props["BaseServiceCharge"] = {"$ref": ref}
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--in", dest="infile", required=True)
@@ -343,6 +363,7 @@ def main() -> None:
     set_servers(doc, args.server_cie, args.server_prod)
     fix_path_parameters(doc)
     simplify_deep_property_refs(doc)
+    patch_ups_spec_quirks(doc)
 
     with open(args.outfile, "w", encoding="utf-8") as f:
         yaml.safe_dump(

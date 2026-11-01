@@ -27,22 +27,24 @@ go get github.com/befship/ups-sdk@latest
 
 ## 快速开始
 
+凭证通过 `ups.Config` 以字符串传入；从环境变量读取只是示例里的可选写法，SDK 本身不依赖环境变量。
+
 ```go
 package main
 
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/befship/ups-sdk/ups"
 )
 
 func main() {
 	client := ups.New(ups.Config{
-		ClientID:     os.Getenv("UPS_CLIENT_ID"),
-		ClientSecret: os.Getenv("UPS_CLIENT_SECRET"),
-		Environment:  ups.EnvSandbox, // 或 ups.EnvProduction
+		ClientID:      "your-client-id",     // 必填；从密钥库 / DB / 参数传入即可
+		ClientSecret:  "your-client-secret", // 必填
+		AccountNumber: "your-account",       // 可选；token 请求的 x-merchant-id
+		Environment:   ups.EnvSandbox,       // 或 ups.EnvProduction
 	})
 
 	ctx := context.Background()

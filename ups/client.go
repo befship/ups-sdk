@@ -21,9 +21,11 @@ const (
 )
 
 // Config holds UPS client credentials and runtime options.
+// Pass ClientID / ClientSecret explicitly (from your secret store, DB, flags, etc.).
+// The SDK does not read credentials from the environment.
 type Config struct {
-	ClientID      string
-	ClientSecret  string
+	ClientID      string // required for authenticated calls
+	ClientSecret  string // required for authenticated calls
 	AccountNumber string // optional; sent as x-merchant-id on token requests
 	Environment   string // "sandbox" (default) or "production"
 

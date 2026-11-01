@@ -1278,7 +1278,7 @@ type RatedShipmentItemizedCharges struct {
 // RatedShipmentNegotiatedRateCharges Negotiated Rate Charges Container.  For tiered rates and promotional discounts, if a particular shipment based on zone, origin, destination or even shipment size doesn't qualify for the existing discount then no negotiated rates container will be returned. Published rates will be the applicable rate.
 type RatedShipmentNegotiatedRateCharges struct {
 	// BaseServiceCharge Negotiated base service charge container.These charges would be returned only when subversion is greater than or equal to 2201.
-	BaseServiceCharge *[]NegotiatedRateChargesBaseServiceCharge `json:"BaseServiceCharge,omitempty"`
+	BaseServiceCharge *NegotiatedRateChargesBaseServiceCharge `json:"BaseServiceCharge,omitempty"`
 
 	// ItemizedCharges Itemized Charges are returned only when the subversion element is present and greater than or equal to '1601'.  These charges would be returned only when subversion is greater than or equal to 1601.
 	//
